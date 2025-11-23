@@ -107,3 +107,13 @@ body {
     background-color: #E61E4D !important;
     border: none !important;
 }
+
+/* show page */
+
+.show-img {
+    height: 35vh;
+}
+
+.btns {
+    display: flex;
+}
