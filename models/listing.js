@@ -7,7 +7,8 @@ const listingSchema = new Schema({
 
     title: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 10
     },
     description: {
         type: String
