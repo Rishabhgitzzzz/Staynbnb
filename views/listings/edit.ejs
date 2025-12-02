@@ -6,41 +6,77 @@
                 <br>
                 <h3><b>Edit Your Listing</b></h3>
                 <br>
-                <form method="post" action="/listings/<%=listing._id%>?_method=PUT">
+                <form method="post" action="/listings/<%=listing._id%>?_method=PUT" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label class="form-label for=" title"> <b>Title :</b></label>
                         <input class="form-control" id="title" name="listing[title]" value="<%=listing.title%>"
-                            type="text">
+                            type="text" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please choose a Title.
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label for=" desc"><b>Description :</b></label>
                         <input class="form-control" id="desc" name="listing[description]"
-                            value="<%=listing.description%>" type="text">
+                            value="<%=listing.description%>" type="text" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please choose a Description.
+                        </div>
                     </div>
                     <div class="row ">
                         <div class="mb-3 col-md-6">
                             <label class="form-label for=" location"><b>Location :</b></label>
                             <input class="form-control" id="location" name="listing[location]"
-                                value="<%=listing.location%>" type="text">
+                                value="<%=listing.location%>" type="text" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please choose a Location.
+                            </div>
                         </div>
 
                         <div class="mb-3 col-md-6">
                             <label class="form-label for=" Country"><b>Country :</b></label>
                             <input class="form-control" id="Country" name="listing[country]"
-                                value="<%=listing.country%>" type="text">
+                                value="<%=listing.country%>" type="text" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please choose a Country.
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label for=" price"> <b>Price :</b></label>
                         <input class="form-control" id="price" name="listing[price]" value="<%=listing.price%>"
-                            type="number">
+                            type="number" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please choose a Price.
+                        </div>
                     </div>
 
 
                     <div class="mb-3">
                         <label class="form-label" for="img"><b>Image URL :</b></label>
                         <input class="form-control" id="" type="text" name="listing[img]" name="listing[img]"
-                            placeholder="enter img URL of your listing">
+                            placeholder="<%=listing.img%>" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please choose a valid URL.
+                        </div>
                     </div>
                     <br>
                     <button class="btn btn-dark edit-btn">Edit</button>
