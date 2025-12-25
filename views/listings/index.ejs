@@ -1,8 +1,9 @@
 <% layout('layouts/boilerplate') -%>
 
     <body>
-        <H3>ALL LISTINGS</H3>
-        <div class="row row-cols-lg 3 row-cols-md 3 row-cols-sm 1">
+
+        <!-- <H3>ALL LISTINGS</H3> -->
+        <div class="row mt-4 row-cols-lg 3 row-cols-md 3 row-cols-sm 1">
             <% for(let listing of allListings) { %>
                 <div class="card listing-card" style="width: 25rem;">
                     <a href="/listings/<%=listing._id%>" class="listing-link">
