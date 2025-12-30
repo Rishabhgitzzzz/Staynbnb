@@ -102,3 +102,8 @@ router.delete("/:id", wrapAsync(async (req, res) => {
 
 
 module.exports = router;
+
+
+
+// router is a router object (a mini Express application). When you do router.get(), router.post(), etc.,
+// you're adding routes TO that router object. The router object stores all those routes internally.
