@@ -43,7 +43,7 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));//“Whenever someone tries to log in using the local strategy, use User.authenticate() to verify.”
+passport.use(new LocalStrategy(User.authenticate()));// “Whenever someone tries to log in using the local strategy, use User.authenticate() to verify.”
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
