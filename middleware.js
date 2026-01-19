@@ -3,7 +3,7 @@ const Review = require("./models/review.js");
 const { listingSchema, reviewSchema } = require("./schema.js");
 const ExpressError = require("./utils/ExpressError.js")
 
-module.exports.isloggedIn = (req, res, next) => {
+module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.redirectUrl = req.originalUrl;
         req.flash("error", "You must be Logged in to access this");
@@ -21,24 +21,9 @@ module.exports.saveRedirectUrl = (req, res, next) => {
 }
 
 
-// module.exports.isOwner = async (req, res, next) => {
-//     let { id } = req.params;
-//     let listing = await Listing.findById(id);
-//     if (!listing.owner._id.equals(res.locals.currUser._id)) {
-//         req.flash("error", "You Don't have permission to perform this action");
-//         return res.redirect(`/listings/${id}`);
-//     }
-//     next();
-// }
 module.exports.isOwner = async (req, res, next) => {
     let { id } = req.params;
     let listing = await Listing.findById(id);
-    // Check if listing exists first
-    if (!listing) {
-        req.flash("error", "Listing not found");
-        return res.redirect("/listings");
-    }
-    // Check if user is the owner
     if (!listing.owner._id.equals(res.locals.currUser._id)) {
         req.flash("error", "You Don't have permission to perform this action");
         return res.redirect(`/listings/${id}`);
@@ -67,28 +52,12 @@ module.exports.validateReview = (req, res, next) => {
 }
 
 
-// module.exports.isReviewAuthor = async (req, res, next) => {
-//     let { id, reviewId } = req.params;
-//     let review = await Review.findById(reviewId);
-//     if (!review.author._id.equals(res.locals.currUser._id)) {
-//         req.flash("error", "You Don't have permission to perform this action");
-//         return res.redirect(`/listings/${id}`);
-//     }
-//     next();
-// }
 module.exports.isReviewAuthor = async (req, res, next) => {
     let { id, reviewId } = req.params;
     let review = await Review.findById(reviewId);
-    // Check if review exists first
-    if (!review) {
-        req.flash("error", "Review not found");
-        return res.redirect(`/listings/${id}`);
-    }
-    // Check if user is the author
     if (!review.author._id.equals(res.locals.currUser._id)) {
         req.flash("error", "You Don't have permission to perform this action");
         return res.redirect(`/listings/${id}`);
     }
-
     next();
 }
