@@ -9,7 +9,7 @@
                     </i></h3>
             </div>
             <div class="card col-6 offset-3 listing-card">
-                <img src="<%=listing.img%>" class="card-img-top show-img" alt="listing">
+                <img src="<%=listing.img.url%>" class="card-img-top show-img" alt="listing">
                 <div class="card-body">
                     <p class="card-text">
                     <p>
@@ -102,10 +102,12 @@
                                                 <%=review.comment%>.
                                             </i>
                                         </p>
-                                        <form class="mb-3" method="post"
-                                            action="/listings/<%=listing._id%>/reviews/<%=review._id%>/?_method=DELETE">
-                                            <button class="btn btn-sm btn-dark">Delete</button>
-                                        </form>
+                                        <% if(currUser ) {%>
+                                            <form class="mb-3" method="post"
+                                                action="/listings/<%=listing._id%>/reviews/<%=review._id%>/?_method=DELETE">
+                                                <button class="btn btn-sm btn-dark">Delete</button>
+                                            </form>
+                                            <% } %>
                                     </div>
                                 </div>
                                 <% } %>
