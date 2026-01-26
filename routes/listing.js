@@ -29,7 +29,7 @@ router.get("/:id/edit", isLoggedIn, isOwner,
 
 
 // update route
-router.put("/:id", isLoggedIn, isOwner,
+router.put("/:id", isLoggedIn, upload.single('listing[img]'), isOwner,
     wrapAsync(updateListing)
 );
 
